@@ -22,15 +22,17 @@ class LinkedList:
         lastNode.next = newNode
 
     # print ll
-    def printlinkedlist(self):
+    def printLinkedlist(self):
         if self.head is None:
             print("Empty List")
             return
         currentNode = self.head
-        while True:
-            if currentNode is None:
-                return
-            print(currentNode.data, "<=>", end=" ")
+        while currentNode is not None:
+
+            if currentNode.next is not None:
+                print(currentNode.data, "=>", end=" ")
+            else:
+                print(currentNode.data)
             currentNode = currentNode.next
 
 
@@ -43,4 +45,4 @@ thirdNode = Node("Sita")
 linkedList.insert(thirdNode)
 fourthNode = Node("Lakshmana")
 linkedList.insert(fourthNode)
-linkedList.printlinkedlist()
+linkedList.printLinkedlist()

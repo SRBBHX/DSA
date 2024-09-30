@@ -1,13 +1,13 @@
 # create Node
 class Node:
-    def __init__(self, data):
+    def __init__(self, data) -> None:
         self.data = data
         self.next = None
-# insert node
-class LinkedList:
-    index = 0
 
-    def __init__(self):
+
+# insert Node
+class LinkedList:
+    def __init__(self) -> None:
         self.head = None
 
     def insert(self, newNode):
@@ -21,21 +21,10 @@ class LinkedList:
             currentNode = currentNode.next
         currentNode.next = newNode
 
-    # return index of given val
-    def returnIndex(self, value):
-        if self.head is None:
-            return
-        currentNode = self.head
-        while currentNode is not None:
-            if currentNode.data == value:
-                return self.index
-            currentNode = currentNode.next
-            self.index += 1
-
-    # print ll
+    # print List
     def printLL(self):
         if self.head is None:
-            print("Empty list!")
+            print("Empty List")
             return
         currentNode = self.head
         while currentNode is not None:
@@ -44,6 +33,22 @@ class LinkedList:
             else:
                 print(currentNode.data)
             currentNode = currentNode.next
+
+    # reverse List
+    def revList(self):
+        if self.head is None:
+            return
+        prevNode = None
+        currNode = self.head
+        while True:
+            if currNode.next is None:
+                break
+            nextNode = currNode.next
+            currNode.next = prevNode
+            prevNode = currNode
+            currNode = nextNode
+        currNode.next = prevNode
+        self.head = currNode
 
 
 linkedlist = LinkedList()
@@ -61,9 +66,7 @@ linkedlist.insert(Node(110))
 linkedlist.insert(Node(120))
 linkedlist.insert(Node(130))
 linkedlist.printLL()
-val = int(input("Enter value: "))
-index = linkedlist.returnIndex(val)
-if index is None:
-    print("Given element is not present in list!")
-else:
-    print("Given value is present at index:", index)
+linkedlist.revList()
+print("Reversed List:-")
+linkedlist.printLL()
+
